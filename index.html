@@ -4,65 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.">
   <title>Javier Elías Crespo</title>
+  <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/doto-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Javier Elías Crespo</h1>
-    <p class="hook">Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.</p>
-  </header>
-
-  <main>
-    <section aria-labelledby="who">
-      <h2 id="who">Who I am</h2>
-      <p>I'm from Puerto Rico, fully bilingual in English and Spanish. I've built with Claude Code every day since February 2026. I direct the agent, read every line it produces, and run it until it proves itself.</p>
-      <p>Before this I spent nearly four years in high-stakes customer work: two years as a butler at The St. Regis, then two years at Optum (UnitedHealthcare) selling and supporting health-insurance plans by phone. I installed Fredrin on October 24 and built this page with it.</p>
-    </section>
-
-    <section aria-labelledby="shipped">
-      <h2 id="shipped">What I've shipped</h2>
-
-      <details>
-        <summary><span class="name">CareerOS</span> (live, runs daily).</summary>
-        <p>A job-search engine that tracks 341 employer job boards (about 300 read each day) through their own APIs, scores each listing against rules I wrote, and sends me a digest each morning. Oct 21 scan: 16,129 listings. Cloud runs since Sep 28: 158 of 159 succeeded; the one failure I caused on purpose to prove the alert works. 25 test suites. 13,765 lines of Python.</p>
-        <p>Public copy of the code: <a href="https://github.com/javierxelias-svg/careeros-public" target="_blank" rel="noopener">github.com/javierxelias-svg/careeros-public</a></p>
-      </details>
-
-      <details>
-        <summary><span class="name">XPT OS</span> (ran weekly, June to September 2026).</summary>
-        <p>An outreach engine for my own search. 17 weekly runs, 41 emails sent, 4 replies. The cloud sandbox blocked outbound calls, so a git commit became the message queue.</p>
-      </details>
-
-      <details>
-        <summary><span class="name">Food Pantry Weekly Digest</span>.</summary>
-        <p>Turns a pantry's weekly numbers into a plain-English brief for volunteers. One file, no login.</p>
-        <p>A demo on sample data: <a href="https://javierxelias-svg.github.io/food-pantry-weekly-digest/" target="_blank" rel="noopener">javierxelias-svg.github.io/food-pantry-weekly-digest</a></p>
-      </details>
-
-      <details>
-        <summary><span class="name">ĀRIAxĒRON</span> (2025).</summary>
-        <p>Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.</p>
-      </details>
-    </section>
-
-    <section aria-labelledby="how">
-      <h2 id="how">How I work</h2>
-      <p class="principle">Verification over vibes.</p>
-      <p>Nothing is done because it looks done; it's done when it ran and left a receipt.</p>
-    </section>
-  </main>
-
-  <footer>
-    <section aria-labelledby="reach">
-      <h2 id="reach">How to reach me</h2>
-      <ul class="contact">
-        <li><a href="mailto:javierxelias@gmail.com">javierxelias@gmail.com</a></li>
-        <li><a href="https://www.linkedin.com/in/javier-el%C3%ADas-83343b39a/" target="_blank" rel="noopener">linkedin.com/in/javier-elías-83343b39a</a></li>
-        <li><a href="https://github.com/javierxelias-svg" target="_blank" rel="noopener">github.com/javierxelias-svg</a></li>
-        <li>Portfolio: <a href="https://javierxelias-svg.github.io/" target="_blank" rel="noopener">javierxelias-svg.github.io</a></li>
+  <div class="bento">
+    <header class="tile hero">
+      <p class="label">About me · Javier Elías Crespo</p>
+      <h1>Javier Elías Crespo</h1>
+      <p class="hook">Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.</p>
+      <ul class="stats">
+        <li><span class="dot-num">341</span> <span class="pill">boards</span></li>
+        <li><span class="dot-num">16,129</span> <span class="pill">listings</span></li>
+        <li><span class="dot-num">158 of 159</span> <span class="pill">cloud runs</span></li>
       </ul>
-    </section>
-  </footer>
+    </header>
+
+    <main>
+      <section class="projects" aria-labelledby="shipped">
+        <h2 id="shipped" class="visually-hidden">What I've shipped</h2>
+
+        <details class="tile aura green">
+          <summary>
+            <h3>CareerOS</h3>
+            <span class="live">Live</span>
+            <span class="big">158<span class="of"> of </span>159</span>
+            <span class="caption">cloud runs succeeded</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>CareerOS (live, runs daily). A job-search engine that tracks 341 employer job boards (about 300 read each day) through their own APIs, scores each listing against rules I wrote, and sends me a digest each morning. Oct 21 scan: 16,129 listings. Cloud runs since Sep 28: 158 of 159 succeeded; the one failure I caused on purpose to prove the alert works. 25 test suites. 13,765 lines of Python.</p>
+            <p>Public copy of the code: <a href="https://github.com/javierxelias-svg/careeros-public" target="_blank" rel="noopener">github.com/javierxelias-svg/careeros-public</a></p>
+          </div>
+        </details>
+
+        <details class="tile aura orange">
+          <summary>
+            <h3>XPT OS</h3>
+            <span class="big">41<span class="arrow"> → </span>4</span>
+            <span class="caption">emails sent → replies</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>XPT OS (ran weekly, June to September 2026). An outreach engine for my own search. 17 weekly runs, 41 emails sent, 4 replies. The cloud sandbox blocked outbound calls, so a git commit became the message queue.</p>
+          </div>
+        </details>
+
+        <details class="tile aura pink">
+          <summary>
+            <h3>Food Pantry Weekly Digest</h3>
+            <span class="sonar" aria-hidden="true"></span>
+            <span class="caption">open it</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>Food Pantry Weekly Digest. Turns a pantry's weekly numbers into a plain-English brief for volunteers. One file, no login.</p>
+            <p>A demo on sample data: <a href="https://javierxelias-svg.github.io/food-pantry-weekly-digest/" target="_blank" rel="noopener">javierxelias-svg.github.io/food-pantry-weekly-digest</a></p>
+          </div>
+        </details>
+
+        <details class="tile aura orb">
+          <summary>
+            <h3>ĀRIAxĒRON</h3>
+            <span class="big">61</span>
+            <span class="caption">applicants in a month</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>ĀRIAxĒRON (2025). Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="tile paper who" aria-labelledby="who">
+        <h2 id="who">Who I am</h2>
+        <p>I'm from Puerto Rico, fully bilingual in English and Spanish. I've built with Claude Code every day since February 2026. I direct the agent, read every line it produces, and run it until it proves itself.</p>
+        <p>Before this I spent nearly four years in high-stakes customer work: two years as a butler at The St. Regis, then two years at Optum (UnitedHealthcare) selling and supporting health-insurance plans by phone. I installed Fredrin on October 24 and built this page with it.</p>
+      </section>
+
+      <section class="tile how" aria-labelledby="how">
+        <h2 id="how">How I work</h2>
+        <p class="principle">Verification over vibes.</p>
+        <p>Nothing is done because it looks done; it's done when it ran and left a receipt.</p>
+      </section>
+    </main>
+
+    <footer class="tile reach">
+      <section aria-labelledby="reach">
+        <h2 id="reach">How to reach me</h2>
+        <ul class="pills">
+          <li><a href="mailto:javierxelias@gmail.com">javierxelias@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/javier-el%C3%ADas-83343b39a/" target="_blank" rel="noopener">linkedin.com/in/javier-elías-83343b39a</a></li>
+          <li><a href="https://github.com/javierxelias-svg" target="_blank" rel="noopener">github.com/javierxelias-svg</a></li>
+          <li><a href="https://javierxelias-svg.github.io/" target="_blank" rel="noopener">Portfolio: javierxelias-svg.github.io</a></li>
+        </ul>
+      </section>
+    </footer>
+  </div>
 </body>
 </html>
