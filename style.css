@@ -111,6 +111,7 @@ summary::-webkit-details-marker {
 
 summary::after {
   content: "+";
+  content: "+" / "";
   position: absolute;
   top: 1.15rem;
   right: 0.25rem;
@@ -122,6 +123,7 @@ summary::after {
 
 details[open] summary::after {
   content: "\2212";
+  content: "\2212" / "";
 }
 
 .project {
