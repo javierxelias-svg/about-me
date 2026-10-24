@@ -1,6 +1,6 @@
 # DESIGN.md: the look of this page
 
-Source: my own "Day One" design (Oct 2026). Soft aura bento dashboard: a dark canvas, glowing gradient tiles, dot-matrix numbers, rounded glass chips. **Build to this; don't invent a different style.** Don't make it a full Apple liquid-glass look, and use no rainbow or chromatic edges.
+Source: my own "Day One" design (Oct 2026). Soft aura bento dashboard: a pale gray canvas (near-black in dark mode), glowing gradient tiles, dot-matrix numbers, rounded glass chips. **Build to this; don't invent a different style.** Don't make it a full Apple liquid-glass look, and use no rainbow or chromatic edges.
 
 ## Fonts (self-hosted in /fonts, OFL licensed, no CDN)
 - UI text: **Geist** (fonts/geist-latin.woff2 + geist-latin-ext.woff2, variable 300–500). Body is 300 weight, letter-spacing -0.01em.
@@ -45,7 +45,7 @@ Breakpoints: below 960px tiles span 6 of 12; below 600px they go full width. No 
 - Secondary TEXT uses --soft-text: #5E6166 in light (5.95:1 on paper, 4.88:1 on canvas) and #9AA0A7 in dark.
 - All text on an aura tile is --ink in light mode (6.8:1 on leaf, 7.2:1 on tang, 4.5:1 on rose). No white text on aura in light mode.
 - Dark mode: text on an aura tile sits on a centered scrim, rgba(12,13,15,.45) with radius 20px. Or keep the aura's bright core out from behind the text. White on a bright core fails (1.98:1 on #34D35A).
-- The page starts in LIGHT mode ("dark canvas" in the intro refers to dark mode only).
+- Light mode (pale gray) is the main look; dark mode follows the visitor's system setting.
 
 ## Type scale (Geist unless noted). Only these sizes.
 - 13px label/pill · 16px tile title · 19px body (300) · 22–24px hook (300, max 34ch) · 28px section h2 (400, -0.03em)
