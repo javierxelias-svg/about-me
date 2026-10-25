@@ -39,7 +39,7 @@ The order puts the promise and its proof first: the full "Why this job" sentence
 6. How to reach me (full width): four glass pills.
 7. Footer line, centered, small.
 - The rim-light phase follows this order, so the light still reads as one light crossing the page.
-- Under 960px tiles span 6 ("Why this job" spans 12, right after CareerOS); under 600px everything stacks in this order. On phones, leave clear space between a tile's title row and its big number. No sideways scroll at 320px.
+- Under 960px tiles span 6 ("Why this job" spans 12, right after CareerOS); under 600px everything stacks in this order, except "Why this job" comes right after the hero, before CareerOS, so the promise fits the first screen at 390×844. On phones, leave clear space between a tile's title row and its big number. No sideways scroll at 320px.
 
 ## Content per tile (all text from content.md, word for word)
 - Project tiles are `<details>`. The closed state shows the title, the big number, a caption and the one-liner; opening shows the full paragraph and the link.
