@@ -1,0 +1,1298 @@
+/* About Me: the approved glass look (DESIGN.md, design/GLASS-RECIPE.md). HTML and CSS only.
+   Order: fonts, tokens, base, layout, glass, components, motion, media queries. */
+
+/* ---------- Fonts (self-hosted, OFL; only the files the page uses) ---------- */
+
+@font-face {
+  font-family: "Geist";
+  src: url("fonts/geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191-2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("fonts/geist-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Doto";
+  src: url("fonts/doto-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tokens: every color once, as light-dark(LIGHT, DARK) ---------- */
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* --t: where the switch knob sits (0 = left, 1 = right); --press: how far it has swollen into a lens */
+@property --t {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --press {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* Every color token is registered, so a theme flip cross-fades it instead of snapping */
+@property --canvas { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --tile { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --paper { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --solid-tile { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --solid-paper { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --soft-text { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --foot-text { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --hair { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rose { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --violet { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --leaf { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --tang { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-leaf { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-rose { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-violet { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-tang { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --frost-top { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --frost-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-back { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --hairline { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-hi2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-lo2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --line-in { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --band-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --band-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --inner { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --edge-top { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --edge-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-1 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-3 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-body { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-cap { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-caustic { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-line { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-drop { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --pill-cap { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --pill-body { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --track { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --track-shade { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --arc { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --arc-soft { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --drift { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --veil { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sun-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --moon-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-band { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --b-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --b-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --s-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-in { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
+
+:root {
+  color-scheme: light dark;
+
+  /* surfaces and text */
+  --canvas: light-dark(#E4E4E2, #0C0D0F);
+  --tile: light-dark(rgba(246, 246, 244, .34), rgba(20, 22, 26, .52));
+  --paper: light-dark(rgba(250, 250, 249, .38), rgba(24, 27, 31, .52));
+  --solid-tile: light-dark(#F1F1EF, #16181C);
+  --solid-paper: light-dark(#FAFAF9, #1A1D21);
+  --ink: light-dark(#1B1C1E, #ECEDEF);
+  --soft-text: light-dark(#5E6166, #A4AAB1);
+  --foot-text: light-dark(#4F5257, #ADB3BA);
+  --hair: light-dark(rgba(0, 0, 0, .08), rgba(255, 255, 255, .07));
+
+  /* project colors */
+  --lime: #DDF53C;
+  --rose: light-dark(#F0397F, #FF4A92);
+  --sky: light-dark(#8DB0F0, #6F9BFF);
+  --violet: light-dark(#B48CF2, #A27BFF);
+  --leaf: light-dark(#3DBB4C, #34D35A);
+  --tang: light-dark(#FF8A1F, #FF7A0F);
+
+  /* page mesh behind everything */
+  --k-leaf: light-dark(rgba(120, 190, 120, .30), rgba(52, 211, 90, .10));
+  --k-sky: light-dark(rgba(141, 176, 240, .32), rgba(111, 155, 255, .11));
+  --k-rose: light-dark(rgba(240, 150, 190, .20), rgba(255, 74, 146, .07));
+  --k-violet: light-dark(rgba(180, 140, 242, .28), rgba(162, 123, 255, .12));
+  --k-tang: light-dark(rgba(255, 170, 100, .24), rgba(255, 122, 15, .07));
+
+  /* glass face */
+  --refl: light-dark(rgba(255, 255, 255, .62), rgba(255, 255, 255, .065));
+  --refl-2: light-dark(rgba(255, 255, 255, .30), rgba(255, 255, 255, .035));
+  --refl-low: light-dark(rgba(255, 255, 255, .55), rgba(255, 255, 255, .04));
+  --frost-top: light-dark(rgba(255, 255, 255, .20), rgba(255, 255, 255, .03));
+  --frost-low: light-dark(rgba(255, 255, 255, .03), rgba(255, 255, 255, 0));
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 .09 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* glass rim and thickness */
+  --rim-hi: light-dark(rgba(255, 255, 255, .75), rgba(255, 255, 255, .30));
+  --rim-mid: light-dark(rgba(255, 255, 255, .20), rgba(255, 255, 255, .06));
+  --rim-back: light-dark(rgba(255, 255, 255, .70), rgba(255, 255, 255, .10));
+  --hairline: light-dark(rgba(30, 34, 40, .06), rgba(255, 255, 255, .03));
+  --bev-hi: light-dark(rgba(255, 255, 255, .80), rgba(255, 255, 255, .13));
+  --bev-hi2: light-dark(rgba(255, 255, 255, .50), rgba(255, 255, 255, .05));
+  --bev-lo: light-dark(rgba(40, 46, 60, .13), rgba(0, 0, 0, .60));
+  --bev-lo2: light-dark(rgba(40, 46, 60, .06), rgba(0, 0, 0, .30));
+  --line-in: light-dark(rgba(20, 24, 30, .05), rgba(0, 0, 0, .28));
+  --band-hi: light-dark(rgba(255, 255, 255, .70), rgba(255, 255, 255, .06));
+  --band-lo: light-dark(rgba(20, 24, 30, .10), rgba(0, 0, 0, .35));
+  --inner: light-dark(rgba(255, 255, 255, .55), rgba(255, 255, 255, .035));
+  --edge-top: light-dark(rgba(255, 255, 255, .95), rgba(255, 255, 255, .14));
+  --edge-low: light-dark(rgba(40, 44, 52, .10), rgba(0, 0, 0, .55));
+  --lift-1: light-dark(rgba(30, 34, 40, .05), rgba(0, 0, 0, .35));
+  --lift-2: light-dark(rgba(30, 34, 40, .07), rgba(0, 0, 0, .40));
+  --lift-3: light-dark(rgba(30, 34, 40, .08), rgba(0, 0, 0, .45));
+
+  /* beads (+, switch knob) and pills */
+  --bead-body: light-dark(rgba(255, 255, 255, .40), rgba(255, 255, 255, .10));
+  --bead-cap: light-dark(rgba(255, 255, 255, .98), rgba(255, 255, 255, .34));
+  --bead-caustic: light-dark(rgba(255, 255, 255, .85), rgba(255, 255, 255, .16));
+  --bead-line: light-dark(rgba(30, 34, 40, .13), rgba(255, 255, 255, .16));
+  --bead-drop: light-dark(rgba(30, 34, 40, .16), rgba(0, 0, 0, .55));
+  --pill-cap: light-dark(rgba(255, 255, 255, .98), rgba(255, 255, 255, .03));
+  --pill-body: light-dark(rgba(255, 255, 255, .40), rgba(255, 255, 255, 0));
+  --track: light-dark(rgba(30, 34, 40, .05), rgba(255, 255, 255, .05));
+  --track-shade: light-dark(rgba(30, 34, 40, .14), rgba(0, 0, 0, .5));
+
+  /* light: rim arc, drifting band, digits, build-log veil */
+  --arc: light-dark(rgba(255, 255, 255, 1), rgba(255, 255, 255, .75));
+  --arc-soft: light-dark(rgba(255, 255, 255, .45), rgba(255, 255, 255, .22));
+  --drift: light-dark(rgba(255, 255, 255, .55), rgba(255, 255, 255, .045));
+  --digit: light-dark(#2A2C30, #D9DDE3);
+  --digit-hi: light-dark(rgba(255, 255, 255, .95), rgba(255, 255, 255, .85));
+  --digit-lo: light-dark(rgba(30, 34, 40, .10), rgba(0, 0, 0, .45));
+  --veil: light-dark(rgba(255, 255, 255, .26), rgba(0, 0, 0, 0));
+  --sun-c: light-dark(#1B1C1E, #A4AAB1);
+  --moon-c: light-dark(#5E6166, #ECEDEF);
+
+  /* composites */
+  --mesh:
+    radial-gradient(44vmax 34vmax at 86% 6%, var(--k-leaf), transparent 70%),
+    radial-gradient(40vmax 38vmax at 6% 20%, var(--k-sky), transparent 70%),
+    radial-gradient(36vmax 30vmax at 52% 48%, var(--k-rose), transparent 70%),
+    radial-gradient(44vmax 40vmax at 4% 84%, var(--k-violet), transparent 70%),
+    radial-gradient(46vmax 36vmax at 84% 94%, var(--k-tang), transparent 70%);
+  --reflect:
+    radial-gradient(95% 90% at 28% -52%, var(--refl) 0%, var(--refl-2) 90%, transparent 97%),
+    radial-gradient(64% 26% at 70% 104%, transparent 50%, var(--refl-low) 78%, transparent 100%);
+  --face: var(--reflect), var(--grain), linear-gradient(180deg, var(--frost-top), var(--frost-low) 55%);
+  --bevel:
+    inset 1px 1px 0 var(--bev-hi), inset -1px -1px 0 var(--bev-lo),
+    inset 2px 2px 2px -1px var(--bev-hi2), inset -2px -2px 2px -1px var(--bev-lo2);
+  --thick:
+    inset 0 0 0 .5px var(--hairline), var(--bevel), inset 0 0 0 2.5px var(--line-in),
+    inset 10px 10px 18px -12px var(--band-hi), inset -10px -10px 18px -13px var(--band-lo),
+    inset 0 0 22px var(--inner);
+  --lift: 0 1px 1.5px var(--lift-1), 0 6px 16px -6px var(--lift-2), 0 26px 56px -24px var(--lift-3);
+  --bead:
+    radial-gradient(110% 62% at 50% 0%, var(--bead-cap), transparent 62%),
+    radial-gradient(80% 50% at 50% 104%, var(--bead-caustic), transparent 70%),
+    var(--bead-body);
+  --bead-shadow:
+    inset 0 0 0 .5px var(--bead-line), inset 0 1px .5px var(--edge-top), inset 0 -1.5px 2px var(--edge-low),
+    0 1px 1.5px var(--bead-drop), 0 5px 12px -4px var(--bead-drop);
+
+  /* type and easing */
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --dots: "Doto", ui-monospace, monospace;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --spring: cubic-bezier(.3, 1.45, .5, 1);
+  --melt: 500ms ease;
+  /* slide with one small overshoot and settle: a spring sampled as linear() */
+  --drop: linear(0, .09 8%, .3 17%, .6 28%, .86 39%, 1.04 50%, 1.08 58%, 1.04 68%, .99 80%, 1);
+
+  --t: 0;
+  transition: --t 520ms var(--drop), --canvas var(--melt), --tile var(--melt), --paper var(--melt), --solid-tile var(--melt), --solid-paper var(--melt), --ink var(--melt), --soft-text var(--melt), --foot-text var(--melt), --hair var(--melt), --rose var(--melt), --sky var(--melt), --violet var(--melt), --leaf var(--melt), --tang var(--melt), --k-leaf var(--melt), --k-sky var(--melt), --k-rose var(--melt), --k-violet var(--melt), --k-tang var(--melt), --refl var(--melt), --refl-2 var(--melt), --refl-low var(--melt), --frost-top var(--melt), --frost-low var(--melt), --rim-hi var(--melt), --rim-mid var(--melt), --rim-back var(--melt), --hairline var(--melt), --bev-hi var(--melt), --bev-hi2 var(--melt), --bev-lo var(--melt), --bev-lo2 var(--melt), --line-in var(--melt), --band-hi var(--melt), --band-lo var(--melt), --inner var(--melt), --edge-top var(--melt), --edge-low var(--melt), --lift-1 var(--melt), --lift-2 var(--melt), --lift-3 var(--melt), --bead-body var(--melt), --bead-cap var(--melt), --bead-caustic var(--melt), --bead-line var(--melt), --bead-drop var(--melt), --pill-cap var(--melt), --pill-body var(--melt), --track var(--melt), --track-shade var(--melt), --arc var(--melt), --arc-soft var(--melt), --drift var(--melt), --digit var(--melt), --digit-hi var(--melt), --digit-lo var(--melt), --veil var(--melt), --sun-c var(--melt), --moon-c var(--melt);
+}
+
+/* The switch flips whichever theme the system chose */
+@media (prefers-color-scheme: light) {
+  :root:has(#theme:checked) { color-scheme: dark; --t: 1; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --t: 1; }
+  :root:has(#theme:checked) { color-scheme: light; --t: 0; }
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  padding: 40px 16px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: -0.005em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+  overflow-wrap: anywhere;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Layout: 12 columns, rows 8+4 / 4+4+4 / 12 / 4+8 / 12 / 12 ---------- */
+
+.bento {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main,
+.foot {
+  display: contents;
+}
+
+.hero { grid-column: span 8; }
+
+.aura,
+.why {
+  grid-column: span 4;
+}
+
+.who { grid-column: span 8; }
+
+.build,
+.how,
+.reach,
+.colophon {
+  grid-column: 1 / -1;
+}
+
+/* Grid position of each tile (--c column, --r row): phases the rim light across the page */
+.green, .why { --c: 8; }
+.pink, .who { --c: 4; }
+.green { --r: 0; }
+.orange, .pink, .why { --r: 1; }
+.build { --r: 2; }
+.orb, .who { --r: 3; }
+.how { --r: 4; }
+.reach { --r: 5; }
+
+/* ---------- Glass ---------- */
+
+/* Behind the glass: the page mesh and one band of light drifting behind the grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--mesh);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: -20vh;
+  bottom: -20vh;
+  left: 0;
+  width: 70vw;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--drift) 50%, transparent);
+  transform: translateX(-60vw) skewX(-16deg);
+}
+
+/* Every tile is a slab of clear glass */
+.tile {
+  position: relative;
+  padding: 36px;
+  overflow: clip;
+  border-radius: 34px;
+  background-color: var(--tile);
+  background-image: var(--face);
+  box-shadow: var(--lift), var(--thick);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+
+.paper {
+  background-color: var(--paper);
+}
+
+/* Rim and refraction ring: the edge catching light over a saturated copy of the mesh */
+.tile::before {
+  --k-leaf: light-dark(rgba(110, 200, 110, .55), rgba(52, 211, 90, .16));
+  --k-sky: light-dark(rgba(120, 165, 245, .55), rgba(111, 155, 255, .17));
+  --k-rose: light-dark(rgba(245, 130, 180, .40), rgba(255, 74, 146, .12));
+  --k-violet: light-dark(rgba(170, 125, 245, .50), rgba(162, 123, 255, .17));
+  --k-tang: light-dark(rgba(255, 160, 80, .45), rgba(255, 122, 15, .12));
+  --mesh:
+    radial-gradient(44vmax 34vmax at 86% 6%, var(--k-leaf), transparent 70%),
+    radial-gradient(40vmax 38vmax at 6% 20%, var(--k-sky), transparent 70%),
+    radial-gradient(36vmax 30vmax at 52% 48%, var(--k-rose), transparent 70%),
+    radial-gradient(44vmax 40vmax at 4% 84%, var(--k-violet), transparent 70%),
+    radial-gradient(46vmax 36vmax at 84% 94%, var(--k-tang), transparent 70%);
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 3px;
+  transition: --k-leaf var(--melt), --k-sky var(--melt), --k-rose var(--melt), --k-violet var(--melt), --k-tang var(--melt);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: .85;
+  background:
+    linear-gradient(135deg, var(--rim-hi) 0%, var(--rim-mid) 28%, transparent 55%, transparent 72%, var(--rim-back) 100%),
+    var(--mesh);
+  background-attachment: scroll, fixed, fixed, fixed, fixed, fixed;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+/* Rim light: a soft arc on a 1.5px edge line that glows 12px into the glass */
+.tile::after {
+  --edge: #000 0 1.5px, rgba(0, 0, 0, .32) 1.5px, transparent 12px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(from var(--a), transparent 0deg 272deg, var(--arc-soft) 308deg, var(--arc) 334deg, transparent 354deg);
+  -webkit-mask: linear-gradient(to bottom, var(--edge)), linear-gradient(to top, var(--edge)), linear-gradient(to right, var(--edge)), linear-gradient(to left, var(--edge));
+  mask: linear-gradient(to bottom, var(--edge)), linear-gradient(to top, var(--edge)), linear-gradient(to right, var(--edge)), linear-gradient(to left, var(--edge));
+}
+
+/* Project tiles: their color is light behind the glass, and their rim picks it up */
+.green { --glow: var(--leaf); }
+.orange { --glow: var(--tang); }
+.pink { --glow: var(--rose); }
+.orb { --glow: var(--violet); }
+
+.aura {
+  --g-band: light-dark(color-mix(in srgb, var(--glow) 60%, transparent), color-mix(in srgb, var(--glow) 45%, transparent));
+  box-shadow: var(--lift), var(--thick), inset 0 -18px 30px -20px var(--g-band);
+  transition: transform 200ms var(--ease), --g-band var(--melt), --g-in var(--melt), --g-sky var(--melt);
+}
+
+.aura::before {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--glow) 35%, var(--rim-hi)) 0%, var(--rim-mid) 28%, transparent 55%, transparent 72%, color-mix(in srgb, var(--glow) 45%, var(--rim-back)) 100%),
+    linear-gradient(180deg, transparent 15%, color-mix(in srgb, var(--glow) 22%, transparent) 60%, color-mix(in srgb, var(--glow) 34%, transparent));
+}
+
+.aura::after {
+  --arc: light-dark(color-mix(in srgb, var(--glow) 55%, white), color-mix(in srgb, var(--glow) 70%, white));
+  --arc-soft: color-mix(in srgb, var(--glow) 45%, transparent);
+  transition: --arc var(--melt), --arc-soft var(--melt);
+}
+
+/* Each project's light sits under the grid, 56px past its tile, pinned with anchor positioning.
+   The carriers are spare pseudo-elements that come after the tiles in the tree.
+   Every gradient fades out inside its own box, so no light ends in a straight line. */
+@supports (anchor-name: --a) {
+  .green { anchor-name: --green; }
+  .orange { anchor-name: --orange; }
+  .pink { anchor-name: --pink; }
+  .orb { anchor-name: --orb; }
+
+  main::after,
+  .foot::before,
+  .foot::after,
+  .bento::after {
+    --b-core: light-dark(color-mix(in srgb, var(--b) 80%, transparent), color-mix(in srgb, var(--b) 78%, transparent));
+    --b-mid: light-dark(color-mix(in srgb, var(--b) 50%, transparent), color-mix(in srgb, var(--b) 46%, transparent));
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: calc(anchor(top) - 56px);
+    bottom: calc(anchor(bottom) - 56px);
+    /* never more than 12px past the grid (the body gutter), so the page never scrolls sideways */
+    left: max(calc(anchor(left) - 56px), -12px);
+    right: max(calc(anchor(right) - 56px), -12px);
+    pointer-events: none;
+    background: radial-gradient(closest-side at 50% 56%, var(--b-core), var(--b-mid) 70%, transparent 100%);
+    transition: --b-core var(--melt), --b-mid var(--melt), --s-core var(--melt);
+  }
+
+  main::after { position-anchor: --green; --b: var(--leaf); }
+  .foot::before { position-anchor: --orange; --b: var(--tang); }
+  .foot::after { position-anchor: --pink; --b: var(--rose); }
+
+  .bento::after {
+    --s-core: light-dark(color-mix(in srgb, var(--sky) 80%, transparent), color-mix(in srgb, var(--sky) 78%, transparent));
+    position-anchor: --orb;
+    --b: var(--violet);
+    background:
+      radial-gradient(36% 40% at 38% 48%, var(--s-core), transparent 100%),
+      radial-gradient(34% 38% at 64% 62%, var(--b-core), var(--b-mid) 60%, transparent 100%);
+  }
+}
+
+/* Without anchor positioning the light glows inside the tile instead */
+@supports not (anchor-name: --a) {
+  .aura {
+    --g-in: light-dark(color-mix(in srgb, var(--glow) 70%, transparent), color-mix(in srgb, var(--glow) 42%, transparent));
+    --g-edge: color-mix(in srgb, var(--glow) 34%, transparent);
+    background-image: var(--face), radial-gradient(48% 42% at 50% 56%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
+  }
+
+  .orb {
+    --g-sky: light-dark(color-mix(in srgb, var(--sky) 70%, transparent), color-mix(in srgb, var(--sky) 42%, transparent));
+    background-image: var(--face), radial-gradient(40% 40% at 40% 50%, var(--g-sky), transparent 100%), radial-gradient(38% 38% at 62% 60%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
+  }
+}
+
+/* ---------- Components ---------- */
+
+/* Hero */
+.label {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: -6px;
+  padding-right: 92px;
+  color: var(--soft-text);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+h1 {
+  margin-top: 16px;
+  font-size: clamp(38px, 4.6vw, 58px);
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+.hook {
+  max-width: 36ch;
+  margin-top: 16px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin-top: 32px;
+}
+
+.stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Big numbers: Doto glass digits, a light edge top-left and a faint shade bottom-right */
+.dot-num,
+.big {
+  color: var(--digit);
+  font-family: var(--dots);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1;
+  text-shadow: -.75px -.75px 0 var(--digit-hi), .75px .75px .5px var(--digit-lo);
+}
+
+.dot-num {
+  font-size: clamp(30px, 2.9vw, 38px);
+  font-weight: 700;
+}
+
+.big {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.of,
+.arrow {
+  font-family: var(--sans);
+  text-shadow: none;
+}
+
+.of {
+  margin: 0 .3em;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.arrow {
+  font-weight: 200;
+}
+
+/* Pills: flat glass capsules */
+.pill,
+.pills a {
+  border-radius: 999px;
+  background: radial-gradient(100% 70% at 50% 0%, var(--pill-cap), transparent 70%), var(--pill-body);
+  box-shadow: inset 0 0 0 .5px var(--bead-line), inset 0 1px .5px var(--edge-top), 0 1px 1.5px var(--lift-1), 0 4px 10px -4px var(--lift-2);
+}
+
+.pill {
+  padding: 4px 12px;
+  color: var(--soft-text);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* Theme switch: a native checkbox in a recessed glass track, the knob is a glass bead */
+.theme {
+  --press: 0;
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 44px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--track);
+  box-shadow: inset 0 1px 2px var(--track-shade), inset 0 0 0 .5px var(--bead-line), 0 1px 0 var(--edge-top);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  /* on release the lens stays clear through the slide, then turns back into the solid knob */
+  transition: --press 500ms cubic-bezier(.7, 0, .84, 0);
+}
+
+/* pressing swells the knob into a lens; letting go melts it back into the bead as it slides */
+.theme:active {
+  --press: 1;
+  transition-duration: 140ms;
+}
+
+.theme input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 999px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.theme:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* The knob is a droplet: it stretches along the track mid-slide (sin of the position),
+   and the spring's overshoot past the end gives the one small wobble as it settles */
+.theme::before,
+.theme::after {
+  --stretch: sin(var(--t) * 180deg);
+  --swell: calc(1 + .16 * var(--press));
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  pointer-events: none;
+  translate: calc(var(--t) * 38px) 0;
+  scale: calc((1 + .4 * var(--stretch)) * var(--swell)) calc((1 - .22 * var(--stretch)) * var(--swell));
+}
+
+/* the solid bead */
+.theme::before {
+  background: var(--bead);
+  box-shadow: var(--bead-shadow);
+  opacity: calc(1 - var(--press));
+}
+
+/* the clear lens: transparent fill, bright rim, a light blur over the track (and the icon, which it magnifies) */
+.theme::after {
+  z-index: 2;
+  background: radial-gradient(70% 60% at 50% 30%, rgba(255, 255, 255, .22), transparent 70%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, .95), inset 0 2px 3px rgba(255, 255, 255, .55),
+    inset 0 -2px 4px rgba(30, 34, 40, .10), 0 2px 8px rgba(30, 34, 40, .14);
+  opacity: var(--press);
+  -webkit-backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
+  backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
+}
+
+.sun,
+.moon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* the icon under the lens grows: the lens magnifies it */
+.sun {
+  color: var(--sun-c);
+  scale: calc(1 + .3 * var(--press) * (1 - var(--t)));
+}
+
+.moon {
+  color: var(--moon-c);
+  scale: calc(1 + .3 * var(--press) * var(--t));
+}
+
+.sun::before {
+  content: "";
+  grid-area: 1 / 1;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.sun::after {
+  content: "";
+  grid-area: 1 / 1;
+  width: 15px;
+  height: 15px;
+  border: 1.5px dotted currentColor;
+  border-radius: 50%;
+}
+
+.moon::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  box-shadow: inset -4px -2px 0 0 currentColor;
+  rotate: -20deg;
+}
+
+/* Project tiles: <details>; closed shows title, number, caption and one line */
+.aura {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  isolation: isolate;
+}
+
+summary {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 272px;
+  margin: 8px;
+  padding: 20px;
+  border-radius: 26px;
+  cursor: pointer;
+  list-style: none;
+  transition: scale 160ms var(--ease);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:focus-visible {
+  outline: none;
+}
+
+details:has(summary:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+summary:active {
+  scale: .985;
+}
+
+summary h2 {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.green h2 {
+  grid-column: 1;
+}
+
+.live {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px 3px 9px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #1B1C1E;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.live::before,
+.live::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1B1C1E;
+}
+
+/* the ping ring sits exactly over the dot */
+.live::after {
+  position: absolute;
+  top: calc(50% - 3.5px);
+  left: 9px;
+  opacity: 0;
+}
+
+.caption {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: center;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.line {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  justify-self: center;
+  max-width: 32ch;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* The + : a glass bead that turns into × */
+.toggle {
+  position: relative;
+  grid-column: 3;
+  grid-row: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bead);
+  box-shadow: var(--bead-shadow);
+  transition: rotate 300ms var(--ease), scale 260ms var(--spring);
+}
+
+.toggle::before,
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--ink);
+  translate: -50% -50%;
+}
+
+.toggle::after {
+  rotate: 90deg;
+}
+
+details[open] .toggle {
+  rotate: 45deg;
+}
+
+.body {
+  margin: 0 8px 8px;
+  padding: 4px 20px 20px;
+}
+
+.body p + p {
+  margin-top: 16px;
+}
+
+.body a {
+  padding-block: .25em;
+}
+
+/* Why this job, Who I am, How I work */
+.tile p {
+  max-width: 62ch;
+}
+
+.who p + p {
+  margin-top: 16px;
+}
+
+.who p,
+.why p {
+  text-wrap: pretty;
+}
+
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.how h2 {
+  margin-bottom: 0;
+}
+
+.principle {
+  padding-top: 4px;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.principle + p {
+  color: var(--soft-text);
+}
+
+/* How this page was built */
+.build {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 24px 32px;
+}
+
+.build h2 {
+  margin-bottom: 8px;
+}
+
+.build-intro {
+  color: var(--soft-text);
+  line-height: 1.65;
+}
+
+/* a feathered veil (light only) keeps grey text readable over the color behind */
+.steps,
+.principle + p {
+  border-radius: 16px;
+  background: var(--veil);
+  box-shadow: 0 0 22px 10px var(--veil);
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-top: 1px solid var(--hair);
+}
+
+.steps li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.steps li:last-child {
+  padding-bottom: 0;
+}
+
+.when,
+.proof {
+  color: var(--soft-text);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.proof {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.what a {
+  padding-block: .25em;
+}
+
+/* How to reach me, footer line */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pills a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: translate 260ms var(--spring);
+}
+
+.pills a:focus-visible {
+  border-radius: 999px;
+}
+
+.colophon {
+  padding-top: 8px;
+  color: var(--foot-text);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- Motion (CSS only; all of it stops under reduced motion, see the end) ---------- */
+
+.tile::after {
+  animation: rim 12s linear infinite;
+  animation-delay: calc(var(--c, 0) * -.45s + var(--r, 0) * -.9s);
+}
+
+body::after {
+  animation: drift 36s ease-in-out infinite alternate;
+}
+
+.live::after {
+  animation: ping 2s cubic-bezier(0, 0, .2, 1) infinite;
+}
+
+details[open] .body {
+  animation: reveal 300ms var(--ease);
+}
+
+@media (hover: hover) {
+  details.tile:hover { transform: translateY(-2px); }
+  summary:hover .toggle { scale: 1.07; }
+  .pills a:hover { translate: 0 -1px; }
+}
+
+/* pressing wins over hover */
+summary:active .toggle {
+  scale: .9;
+  transition-duration: 90ms;
+}
+
+.pills a:active {
+  translate: 0 1px;
+  transition-duration: 90ms;
+}
+
+@keyframes rim {
+  to { --a: 360deg; }
+}
+
+@keyframes drift {
+  from { transform: translateX(-60vw) skewX(-16deg); }
+  to { transform: translateX(95vw) skewX(-16deg); }
+}
+
+@keyframes ping {
+  0% { opacity: .55; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(3); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Opening a tile grows it smoothly where the browser can animate to height: auto */
+@supports (interpolate-size: allow-keywords) and selector(::details-content) {
+  :root { interpolate-size: allow-keywords; }
+
+  .aura::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 320ms var(--ease), content-visibility 320ms allow-discrete;
+  }
+
+  .aura[open]::details-content { block-size: auto; }
+}
+
+/* ---------- Media queries ---------- */
+
+@media (max-width: 959px) {
+  .hero,
+  .aura,
+  .who {
+    grid-column: span 6;
+  }
+
+  /* the promise right after CareerOS, ĀRIAxĒRON with the other projects;
+     ĀRIAxĒRON and Who I am span the row, so no row has a hole */
+  .why,
+  .orb,
+  .who {
+    grid-column: 1 / -1;
+  }
+
+  .green { order: 0; }
+  .why { order: 1; }
+  .orange { order: 2; }
+  .pink { order: 3; }
+  .orb { order: 4; }
+  .build { order: 5; }
+  .who { order: 6; }
+  .how { order: 7; }
+  .foot > * { order: 8; }
+
+  .build { grid-template-columns: 1fr; }
+
+  .hero, .why, .orange, .orb, .build, .who, .how, .reach { --c: 0; }
+  .green, .pink { --c: 6; }
+  .hero, .green { --r: 0; }
+  .why { --r: 1; }
+  .orange, .pink { --r: 2; }
+  .orb { --r: 3; }
+  .build { --r: 4; }
+  .who { --r: 5; }
+  .how { --r: 6; }
+  .reach { --r: 7; }
+}
+
+@media (max-width: 599px) {
+  body {
+    padding: 16px 12px 32px;
+    font-size: 16px;
+  }
+
+  .bento { gap: 12px; }
+
+  .hero,
+  .aura,
+  .who {
+    grid-column: span 12;
+  }
+
+  /* phones: the promise comes right after the hero, so it is on the first screen */
+  .why { order: 0; }
+  .green { order: 1; }
+
+  .tile {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .aura { padding: 0; }
+
+  .theme {
+    top: 18px;
+    right: 18px;
+  }
+
+  summary {
+    min-height: 220px;
+    margin: 6px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .body {
+    margin: 0 6px 6px;
+    padding: 4px 18px 18px;
+  }
+
+  h2 { font-size: 20px; }
+  .hook { font-size: 18px; }
+  .principle { font-size: 26px; }
+  .big {
+    margin-top: 20px;
+    font-size: 52px;
+  }
+  .stats { gap: 16px 24px; }
+
+  .steps li {
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+  }
+
+  .steps .what {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .tile { --c: 0; }
+  .why { --r: 1; }
+  .green { --r: 2; }
+  .orange { --r: 3; }
+  .pink { --r: 4; }
+  .orb { --r: 5; }
+  .build { --r: 6; }
+  .who { --r: 7; }
+  .how { --r: 8; }
+  .reach { --r: 9; }
+}
+
+/* Reduce transparency: tiles become solid, readable surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .tile {
+    background-color: var(--solid-tile);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .paper { background-color: var(--solid-paper); }
+
+  .theme,
+  .theme::after {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Forced colors: tiles keep visible edges, the + and the switch stay visible */
+@media (forced-colors: active) {
+  body::before,
+  body::after,
+  .tile::before,
+  .tile::after,
+  main::after,
+  .foot::before,
+  .foot::after,
+  .bento::after {
+    display: none;
+  }
+
+  .tile,
+  .pill,
+  .pills a {
+    border: 1px solid CanvasText;
+    background-image: none;
+  }
+
+  .toggle,
+  .theme::before {
+    background-image: none;
+  }
+
+  .toggle,
+  .theme {
+    border: 1px solid ButtonText;
+  }
+
+  .toggle::before,
+  .toggle::after {
+    background: ButtonText;
+  }
+
+  .theme::before {
+    border: 2px solid Highlight;
+    opacity: 1;
+  }
+
+  .theme::after {
+    display: none;
+  }
+
+  .live,
+  .live::before {
+    forced-color-adjust: none;
+  }
+}
+
+/* Reduced motion: nothing moves. Kept as its own rules so no unknown selector can cancel them. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  body::after { transform: translateX(10vw) skewX(-16deg); }
+  details.tile:hover { transform: none; }
+  summary:active,
+  summary:hover .toggle,
+  summary:active .toggle,
+  .theme::before,
+  .theme::after,
+  .sun,
+  .moon { scale: none; }
+  .pills a:hover,
+  .pills a:active { translate: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @supports selector(::details-content) {
+    .aura::details-content { transition: none; }
+  }
+}

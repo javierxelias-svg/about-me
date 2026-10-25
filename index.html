@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#E4E4E2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0C0D0F" media="(prefers-color-scheme: dark)">
+  <title>Javier Elías Crespo</title>
+  <meta name="description" content="Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Javier Elías Crespo">
+  <meta property="og:description" content="Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Javier Elías Crespo">
+  <meta name="twitter:description" content="Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/doto-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bento">
+    <header class="tile hero">
+      <label class="theme">
+        <input type="checkbox" role="switch" id="theme" aria-label="Flip light and dark theme">
+        <span class="sun" aria-hidden="true"></span>
+        <span class="moon" aria-hidden="true"></span>
+      </label>
+      <p class="label">Puerto Rico (UTC−4) · US citizen, no visa needed · Remote, open to travel</p>
+      <h1>Javier Elías Crespo</h1>
+      <p class="hook">Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.</p>
+      <ul class="stats">
+        <li><span class="dot-num">341</span> <span class="pill">boards</span></li>
+        <li><span class="dot-num">16,129</span> <span class="pill">listings</span></li>
+      </ul>
+    </header>
+
+    <main>
+      <details class="tile aura green">
+          <summary>
+            <h2>CareerOS</h2>
+            <span class="live">Live</span>
+            <span class="big">161<span class="of"> of </span>162</span>
+            <span class="caption">cloud runs succeeded</span>
+            <span class="line">An operating system that scans thousands of jobs across hundreds of job boards and sends me the ones that fit my parameters every morning on Telegram.</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>CareerOS (live, runs daily). A job-search engine that tracks 341 employer job boards (about 300 read each day) through their own APIs, scores each listing against rules I wrote, and sends me a digest each morning. Oct 21 scan: 16,129 listings. Cloud runs from Sep 28 to Oct 24: 161 of 162 succeeded; the one failure I caused on purpose to prove the alert works. 25 test suites. 13,765 lines of Python.</p>
+            <p>Public copy of the code: <a href="https://github.com/javierxelias-svg/careeros-public" target="_blank" rel="noopener">github.com/javierxelias-svg/careeros-public</a></p>
+          </div>
+        </details>
+
+      <details class="tile aura orange">
+          <summary>
+            <h2>XPT OS</h2>
+            <span class="big">17</span>
+            <span class="caption">weekly runs</span>
+            <span class="line">The cloud sandbox blocked outbound calls, so a git commit became the message queue.</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>XPT OS (ran weekly, June to September 2026). An outreach engine for my own search. 17 weekly runs, 41 emails sent, 4 replies. The cloud sandbox blocked outbound calls, so a git commit became the message queue.</p>
+          </div>
+        </details>
+
+      <details class="tile aura pink">
+          <summary>
+            <h2>Food Pantry Weekly Digest</h2>
+            <span class="big">1<span class="arrow"> → </span>2</span>
+            <span class="caption">spreadsheet → brief + post</span>
+            <span class="line">Turns a pantry's weekly numbers into a plain-English brief for volunteers.</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>Food Pantry Weekly Digest. Turns a pantry's weekly numbers into a plain-English brief for volunteers. One file, no login.</p>
+            <p>A demo on sample data: <a href="https://javierxelias-svg.github.io/food-pantry-weekly-digest/" target="_blank" rel="noopener">javierxelias-svg.github.io/food-pantry-weekly-digest</a></p>
+          </div>
+        </details>
+
+      <section class="tile why" aria-labelledby="why">
+        <h2 id="why">Why this job</h2>
+        <p>When the tool I need doesn't exist, I build it, and I don't stop until it works. At The St. Regis I learned to see what people need before they ask. This job is both, for a customer's team. Give me a customer's repo and I'll make it agent-ready, catch what the agent gets wrong, and stay until the tickets merge.</p>
+      </section>
+
+      <section class="tile build" aria-labelledby="build">
+        <div class="build-head">
+          <h2 id="build">How this page was built</h2>
+          <p class="build-intro">A Fredrin agent wrote the code. I decided the facts, the rules and the checks, and reviewed every change. Claude, in a separate session, helped me plan, put my words together, prototype the design and check the work. The agent's first pull request merged itself in 38 seconds without review; I caught it, reverted it and switched to manual merge.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="when">01</span>
+            <span class="what" id="step-1">I locked the facts first (<a href="https://github.com/javierxelias-svg/about-me/blob/main/content.md" target="_blank" rel="noopener">content.md</a>) and had a checker built that failed before any code existed.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/2714ab4" target="_blank" rel="noopener" aria-describedby="step-1">commit</a>
+          </li>
+          <li>
+            <span class="when">02</span>
+            <span class="what" id="step-2">Ticket A ran with no project rules. Its pull request merged itself 38 seconds after opening, before anyone read it. I reverted it and turned on manual merge.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/1" target="_blank" rel="noopener" aria-describedby="step-2">PR #1</a>
+          </li>
+          <li>
+            <span class="when">03</span>
+            <span class="what" id="step-3">Same ticket, now with my rules (<a href="https://github.com/javierxelias-svg/about-me/blob/main/AGENTS.md" target="_blank" rel="noopener">AGENTS.md</a>). Both builds passed every check. The rules made the agent follow the standards, but neither page looked like me.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/526dfcb" target="_blank" rel="noopener" aria-describedby="step-3">commit</a>
+          </li>
+          <li>
+            <span class="when">04</span>
+            <span class="what" id="step-4">I wrote my design down (<a href="https://github.com/javierxelias-svg/about-me/blob/main/DESIGN.md" target="_blank" rel="noopener">DESIGN.md</a>) and sent the work back. The look you see came from that review, not from the first try.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/abbe230" target="_blank" rel="noopener" aria-describedby="step-4">commit</a>
+          </li>
+          <li>
+            <span class="when">05</span>
+            <span class="what" id="step-5">Every change since has been read and merged by me.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/2" target="_blank" rel="noopener" aria-describedby="step-5">PR #2</a>
+          </li>
+        </ol>
+      </section>
+
+      <details class="tile aura orb">
+          <summary>
+            <h2>ĀRIAxĒRON</h2>
+            <span class="big">61</span>
+            <span class="caption">applicants in a month</span>
+            <span class="line">Founded an email marketing company for luxury hotels.</span>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="body">
+            <p>ĀRIAxĒRON (2025). Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.</p>
+          </div>
+        </details>
+
+      <section class="tile paper who" aria-labelledby="who">
+        <h2 id="who">Who I am</h2>
+        <p>I'm from Puerto Rico, fully bilingual in English and Spanish. I've built with Claude Code every day since February 2026. I direct the agent, read every line it produces, and run it until it proves itself.</p>
+        <p>Before this I spent nearly four years in high-stakes customer work: two years as a butler at The St. Regis, then two years at Optum (UnitedHealthcare) selling and supporting health-insurance plans by phone. I installed Fredrin on October 24 and built this page with it.</p>
+      </section>
+
+      <section class="tile how" aria-labelledby="how">
+        <h2 id="how">How I work</h2>
+        <p class="principle">Verification over vibes.</p>
+        <p>Nothing is done because it looks done; it's done when it ran and left a receipt.</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <section class="tile reach" aria-labelledby="reach">
+        <h2 id="reach">How to reach me</h2>
+        <ul class="pills">
+          <li><a href="mailto:javierxelias@gmail.com">javierxelias@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/javier-el%C3%ADas-83343b39a/" target="_blank" rel="noopener">linkedin.com/in/javier-elías-83343b39a</a></li>
+          <li><a href="https://github.com/javierxelias-svg" target="_blank" rel="noopener">github.com/javierxelias-svg</a></li>
+          <li><a href="https://javierxelias-svg.github.io/" target="_blank" rel="noopener">Portfolio: javierxelias-svg.github.io</a></li>
+        </ul>
+      </section>
+      <p class="colophon">Built with Fredrin for the Forward Deployed Engineer application, Oct 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
