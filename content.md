@@ -24,7 +24,7 @@ Verification over vibes. Nothing is done because it looks done; it's done when i
 
 HOW THIS PAGE WAS BUILT
 A Fredrin agent wrote the code. I decided the facts, the rules and the checks, and reviewed every change. Claude, in a separate session, helped me plan, put my words together, prototype the design and check the work. The agent's first pull request merged itself in 38 seconds without review; I caught it, reverted it and switched to manual merge.
-01 I wrote the facts first (content.md) and had a checker built that failed before any code existed. Proof: commit
+01 I locked the facts first (content.md) and had a checker built that failed before any code existed. Proof: commit
 02 Ticket A ran with no project rules. Its pull request merged itself 38 seconds after opening, before anyone read it. I reverted it and turned on manual merge. Proof: PR #1
 03 Same ticket, now with my rules (AGENTS.md). Both builds passed every check. The rules made the agent follow the standards, but neither page looked like me. Proof: commit
 04 I wrote my design down (DESIGN.md) and sent the work back. The look you see came from that review, not from the first try. Proof: commit
