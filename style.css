@@ -1097,23 +1097,36 @@ summary:active .toggle {
     grid-column: span 6;
   }
 
-  /* the promise comes right after CareerOS */
-  .why { grid-column: 1 / -1; }
-  main > *, .foot > * { order: 2; }
+  /* the promise right after CareerOS, ĀRIAxĒRON with the other projects;
+     ĀRIAxĒRON and Who I am span the row, so no row has a hole */
+  .why,
+  .orb,
+  .who {
+    grid-column: 1 / -1;
+  }
+
   .green { order: 0; }
   .why { order: 1; }
+  .orange { order: 2; }
+  .pink { order: 3; }
+  .orb { order: 4; }
+  .build { order: 5; }
+  .who { order: 6; }
+  .how { order: 7; }
+  .foot > * { order: 8; }
 
   .build { grid-template-columns: 1fr; }
 
-  .hero, .orange, .orb, .why, .build, .how, .reach { --c: 0; }
-  .green, .pink, .who { --c: 6; }
+  .hero, .why, .orange, .orb, .build, .who, .how, .reach { --c: 0; }
+  .green, .pink { --c: 6; }
   .hero, .green { --r: 0; }
   .why { --r: 1; }
   .orange, .pink { --r: 2; }
-  .build { --r: 3; }
-  .orb, .who { --r: 4; }
-  .how { --r: 5; }
-  .reach { --r: 6; }
+  .orb { --r: 3; }
+  .build { --r: 4; }
+  .who { --r: 5; }
+  .how { --r: 6; }
+  .reach { --r: 7; }
 }
 
 @media (max-width: 599px) {
@@ -1182,8 +1195,8 @@ summary:active .toggle {
   .green { --r: 2; }
   .orange { --r: 3; }
   .pink { --r: 4; }
-  .build { --r: 5; }
-  .orb { --r: 6; }
+  .orb { --r: 5; }
+  .build { --r: 6; }
   .who { --r: 7; }
   .how { --r: 8; }
   .reach { --r: 9; }
