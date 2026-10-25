@@ -215,15 +215,6 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 /* ---------- Layout: 12 columns, rows 8+4 / 4+4+4 / 12 / 4+8 / 12 / 12 ---------- */
 
 .bento {
@@ -420,12 +411,12 @@ body::after {
   .aura {
     --g-in: light-dark(color-mix(in srgb, var(--glow) 70%, transparent), color-mix(in srgb, var(--glow) 42%, transparent));
     --g-edge: color-mix(in srgb, var(--glow) 34%, transparent);
-    background-image: var(--face), radial-gradient(62% 48% at 50% 56%, var(--g-in), transparent 100%), radial-gradient(90% 42% at 50% 108%, var(--g-edge), transparent 100%);
+    background-image: var(--face), radial-gradient(48% 42% at 50% 56%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
   }
 
   .orb {
     --g-sky: light-dark(color-mix(in srgb, var(--sky) 70%, transparent), color-mix(in srgb, var(--sky) 42%, transparent));
-    background-image: var(--face), radial-gradient(44% 40% at 40% 50%, var(--g-sky), transparent 100%), radial-gradient(44% 40% at 62% 60%, var(--g-in), transparent 100%), radial-gradient(90% 42% at 50% 108%, var(--g-edge), transparent 100%);
+    background-image: var(--face), radial-gradient(40% 40% at 40% 50%, var(--g-sky), transparent 100%), radial-gradient(38% 38% at 62% 60%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
   }
 }
 
