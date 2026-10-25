@@ -112,6 +112,8 @@
 @property --b-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
 @property --b-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
 @property --s-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-in { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
 
 :root {
   color-scheme: light dark;
@@ -440,7 +442,7 @@ body::after {
 .aura {
   --g-band: light-dark(color-mix(in srgb, var(--glow) 60%, transparent), color-mix(in srgb, var(--glow) 45%, transparent));
   box-shadow: var(--lift), var(--thick), inset 0 -18px 30px -20px var(--g-band);
-  transition: transform 200ms var(--ease), --g-band var(--melt);
+  transition: transform 200ms var(--ease), --g-band var(--melt), --g-in var(--melt), --g-sky var(--melt);
 }
 
 .aura::before {
@@ -1267,7 +1269,11 @@ summary:active .toggle {
   details.tile:hover { transform: none; }
   summary:active,
   summary:hover .toggle,
-  summary:active .toggle { scale: none; }
+  summary:active .toggle,
+  .theme::before,
+  .theme::after,
+  .sun,
+  .moon { scale: none; }
   .pills a:hover,
   .pills a:active { translate: none; }
 }
