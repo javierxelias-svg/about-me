@@ -1,4 +1,5 @@
 Javier Elías Crespo
+Hero line: Puerto Rico (UTC−4) · US citizen, no visa needed · Remote, open to travel
 Former butler at The St. Regis, the Alfred in the room. Now I run AI coding agents, anticipate what's needed before anyone asks, and ship nothing until it works inside and out.
 
 WHO I AM
@@ -6,7 +7,7 @@ I'm from Puerto Rico, fully bilingual in English and Spanish. I've built with Cl
 
 WHAT I'VE SHIPPED
 CareerOS line: An operating system that scans thousands of jobs across hundreds of job boards and sends me the ones that fit my parameters every morning on Telegram.
-CareerOS (live, runs daily). A job-search engine that tracks 341 employer job boards (about 300 read each day) through their own APIs, scores each listing against rules I wrote, and sends me a digest each morning. Oct 21 scan: 16,129 listings. Cloud runs since Sep 28: 158 of 159 succeeded; the one failure I caused on purpose to prove the alert works. 25 test suites. 13,765 lines of Python. Public copy of the code: github.com/javierxelias-svg/careeros-public
+CareerOS (live, runs daily). A job-search engine that tracks 341 employer job boards (about 300 read each day) through their own APIs, scores each listing against rules I wrote, and sends me a digest each morning. Oct 21 scan: 16,129 listings. Cloud runs from Sep 28 to Oct 24: 161 of 162 succeeded; the one failure I caused on purpose to prove the alert works. 25 test suites. 13,765 lines of Python. Public copy of the code: github.com/javierxelias-svg/careeros-public
 
 XPT OS (ran weekly, June to September 2026). An outreach engine for my own search. 17 weekly runs, 41 emails sent, 4 replies. The cloud sandbox blocked outbound calls, so a git commit became the message queue.
 

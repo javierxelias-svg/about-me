@@ -29,7 +29,7 @@
 - Everything that moves stops under `prefers-reduced-motion: reduce`. Write that rule on its own, so a selector the browser doesn't know can't cancel it.
 
 ## Layout: 12-column grid, gap 16px, max-width 1200px
-1. Hero (span 8): label "About me · Javier Elías Crespo", h1, hook, two Doto stats (341 boards, 16,129 listings), theme switch. CareerOS tile (span 4) next to it.
+1. Hero (span 8): label = the "Hero line" from content.md, h1, hook, two Doto stats (341 boards, 16,129 listings), theme switch. CareerOS tile (span 4) next to it.
 2. XPT OS · Food Pantry · ĀRIAxĒRON (span 4 each).
 3. Who I am (span 6) | a right column (span 6) with "Why this job" stacked above "How I work".
 4. How this page was built (full width): intro paragraph on the left, five numbered steps on the right, each ending in its proof link.
@@ -39,7 +39,7 @@
 
 ## Content per tile (all text from content.md, word for word)
 - Project tiles are `<details>`. The closed state shows the title, the big number, a caption and the one-liner; opening shows the full paragraph and the link.
-- CareerOS: big "158 of 159", caption "cloud runs succeeded", one-liner = the "CareerOS line".
+- CareerOS: big "161 of 162" (the cloud-runs figure in content.md), caption "cloud runs succeeded", one-liner = the "CareerOS line".
 - XPT OS: big "17", caption "weekly runs", one-liner "The cloud sandbox blocked outbound calls, so a git commit became the message queue."
 - Food Pantry: big "1 → 0", caption "file → logins" (from the "Food Pantry line"), one-liner "Turns a pantry's weekly numbers into a plain-English brief for volunteers."
 - ĀRIAxĒRON: big "61", caption "applicants in a month", one-liner "Founded an email marketing company for luxury hotels."
