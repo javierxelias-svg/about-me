@@ -1,0 +1,33 @@
+{
+  "generated_by": "hand-written public allow-list (2026-10-25)",
+  "note": "Every number, date and sentence on the page must come from content.md, passed with --content. This file adds only the rules below.",
+  "email": "javierxelias@gmail.com",
+  "numbers": {},
+  "of_pairs": [],
+  "dates": [],
+  "number_words": [],
+  "stale": {},
+  "required_text": [
+    "Javier Elías Crespo"
+  ],
+  "banned_spellings": [
+    "Javier Elias Crespo",
+    "Javier Elias"
+  ],
+  "banned_claims": [
+    {
+      "label": "'N years of experience' claim",
+      "pattern": "\\b(\\d+|one|two|three|four|five|six|seven|eight|nine|ten|several|many)\\+?\\s+years?\\s+of\\s+(\\w+\\s+){0,2}experience"
+    },
+    {
+      "label": "CS degree",
+      "pattern": "\\b(cs|computer[- ]science)\\s+degree\\b|\\bdegree\\s+in\\s+computer\\s+science\\b"
+    }
+  ],
+  "source_text": "",
+  "manual": {
+    "numbers": {},
+    "of_pairs": [],
+    "dates": []
+  }
+}

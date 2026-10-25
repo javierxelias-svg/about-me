@@ -29,13 +29,13 @@ Attach screenshots at 390px and 1280px wide, light and dark (4 images), and comp
 Run the checker and paste its full output in your final message:
 
 ```
-python3 /tmp/fredrin-kit/verify_page.py . --content content.md
+python3 checks/verify_page.py . --content content.md
 ```
 
 Fix every FAIL before finishing. List every WARN and say why it's acceptable or what you changed.
 
 ## Never
-- Never edit, skip or weaken the checker, tests or CI to make them pass.
+- Never edit, skip or weaken the checker (`checks/`), tests or CI to make them pass.
 - Never touch files the ticket doesn't need.
 - Never run `git stash` (it's shared across every Fredrin worktree).
 - Don't assume. If the ticket is unclear, ask before building.

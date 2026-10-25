@@ -1,0 +1,6 @@
+# The checker's fingerprint, recorded 2026-10-24 13:49 -0400, before the first reviewed build
+
+cb26135a6cbdd75f7c15efa08cccfcc1a6328c923bd3c35107a546702f5042c1  verify_page.py
+
+checks/verify_page.py in this repo has this same sha256: no agent has edited it.
+Check it yourself: shasum -a 256 checks/verify_page.py
