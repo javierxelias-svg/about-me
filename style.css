@@ -35,6 +35,84 @@
   initial-value: 0deg;
 }
 
+/* --t: where the switch knob sits (0 = left, 1 = right); --press: how far it has swollen into a lens */
+@property --t {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --press {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* Every color token is registered, so a theme flip cross-fades it instead of snapping */
+@property --canvas { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --tile { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --paper { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --solid-tile { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --solid-paper { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --soft-text { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --foot-text { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --hair { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rose { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --violet { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --leaf { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --tang { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-leaf { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-rose { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-violet { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --k-tang { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --refl-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --frost-top { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --frost-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --rim-back { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --hairline { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-hi2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bev-lo2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --line-in { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --band-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --band-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --inner { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --edge-top { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --edge-low { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-1 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --lift-3 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-body { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-cap { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-caustic { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-line { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --bead-drop { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --pill-cap { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --pill-body { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --track { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --track-shade { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --arc { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --arc-soft { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --drift { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit-hi { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --digit-lo { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --veil { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sun-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --moon-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --g-band { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --b-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --b-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --s-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
+
 :root {
   color-scheme: light dark;
 
@@ -110,6 +188,8 @@
   --digit-hi: light-dark(rgba(255, 255, 255, .95), rgba(255, 255, 255, .85));
   --digit-lo: light-dark(rgba(30, 34, 40, .10), rgba(0, 0, 0, .45));
   --veil: light-dark(rgba(255, 255, 255, .26), rgba(0, 0, 0, 0));
+  --sun-c: light-dark(#1B1C1E, #A4AAB1);
+  --moon-c: light-dark(#5E6166, #ECEDEF);
 
   /* composites */
   --mesh:
@@ -143,15 +223,22 @@
   --dots: "Doto", ui-monospace, monospace;
   --ease: cubic-bezier(.2, .8, .2, 1);
   --spring: cubic-bezier(.3, 1.45, .5, 1);
+  --melt: 500ms ease;
+  /* slide with one small overshoot and settle: a spring sampled as linear() */
+  --drop: linear(0, .09 8%, .3 17%, .6 28%, .86 39%, 1.04 50%, 1.08 58%, 1.04 68%, .99 80%, 1);
+
+  --t: 0;
+  transition: --t 520ms var(--drop), --canvas var(--melt), --tile var(--melt), --paper var(--melt), --solid-tile var(--melt), --solid-paper var(--melt), --ink var(--melt), --soft-text var(--melt), --foot-text var(--melt), --hair var(--melt), --rose var(--melt), --sky var(--melt), --violet var(--melt), --leaf var(--melt), --tang var(--melt), --k-leaf var(--melt), --k-sky var(--melt), --k-rose var(--melt), --k-violet var(--melt), --k-tang var(--melt), --refl var(--melt), --refl-2 var(--melt), --refl-low var(--melt), --frost-top var(--melt), --frost-low var(--melt), --rim-hi var(--melt), --rim-mid var(--melt), --rim-back var(--melt), --hairline var(--melt), --bev-hi var(--melt), --bev-hi2 var(--melt), --bev-lo var(--melt), --bev-lo2 var(--melt), --line-in var(--melt), --band-hi var(--melt), --band-lo var(--melt), --inner var(--melt), --edge-top var(--melt), --edge-low var(--melt), --lift-1 var(--melt), --lift-2 var(--melt), --lift-3 var(--melt), --bead-body var(--melt), --bead-cap var(--melt), --bead-caustic var(--melt), --bead-line var(--melt), --bead-drop var(--melt), --pill-cap var(--melt), --pill-body var(--melt), --track var(--melt), --track-shade var(--melt), --arc var(--melt), --arc-soft var(--melt), --drift var(--melt), --digit var(--melt), --digit-hi var(--melt), --digit-lo var(--melt), --veil var(--melt), --sun-c var(--melt), --moon-c var(--melt);
 }
 
 /* The switch flips whichever theme the system chose */
 @media (prefers-color-scheme: light) {
-  :root:has(#theme:checked) { color-scheme: dark; }
+  :root:has(#theme:checked) { color-scheme: dark; --t: 1; }
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:has(#theme:checked) { color-scheme: light; }
+  :root { --t: 1; }
+  :root:has(#theme:checked) { color-scheme: light; --t: 0; }
 }
 
 /* ---------- Base ---------- */
@@ -317,6 +404,7 @@ body::after {
   inset: 0;
   z-index: 3;
   padding: 3px;
+  transition: --k-leaf var(--melt), --k-sky var(--melt), --k-rose var(--melt), --k-violet var(--melt), --k-tang var(--melt);
   border-radius: inherit;
   pointer-events: none;
   opacity: .85;
@@ -352,6 +440,7 @@ body::after {
 .aura {
   --g-band: light-dark(color-mix(in srgb, var(--glow) 60%, transparent), color-mix(in srgb, var(--glow) 45%, transparent));
   box-shadow: var(--lift), var(--thick), inset 0 -18px 30px -20px var(--g-band);
+  transition: transform 200ms var(--ease), --g-band var(--melt);
 }
 
 .aura::before {
@@ -363,6 +452,7 @@ body::after {
 .aura::after {
   --arc: light-dark(color-mix(in srgb, var(--glow) 55%, white), color-mix(in srgb, var(--glow) 70%, white));
   --arc-soft: color-mix(in srgb, var(--glow) 45%, transparent);
+  transition: --arc var(--melt), --arc-soft var(--melt);
 }
 
 /* Each project's light sits under the grid, 56px past its tile, pinned with anchor positioning.
@@ -390,6 +480,7 @@ body::after {
     right: max(calc(anchor(right) - 56px), -12px);
     pointer-events: none;
     background: radial-gradient(closest-side at 50% 56%, var(--b-core), var(--b-mid) 70%, transparent 100%);
+    transition: --b-core var(--melt), --b-mid var(--melt), --s-core var(--melt);
   }
 
   main::after { position-anchor: --green; --b: var(--leaf); }
@@ -521,6 +612,7 @@ h1 {
 
 /* Theme switch: a native checkbox in a recessed glass track, the knob is a glass bead */
 .theme {
+  --press: 0;
   position: absolute;
   top: 26px;
   right: 26px;
@@ -535,6 +627,14 @@ h1 {
   cursor: pointer;
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   backdrop-filter: blur(14px) saturate(150%);
+  /* on release the lens stays clear through the slide, then turns back into the solid knob */
+  transition: --press 500ms cubic-bezier(.7, 0, .84, 0);
+}
+
+/* pressing swells the knob into a lens; letting go melts it back into the bead as it slides */
+.theme:active {
+  --press: 1;
+  transition-duration: 140ms;
 }
 
 .theme input {
@@ -554,7 +654,12 @@ h1 {
   outline-offset: 3px;
 }
 
-.theme::before {
+/* The knob is a droplet: it stretches along the track mid-slide (sin of the position),
+   and the spring's overshoot past the end gives the one small wobble as it settles */
+.theme::before,
+.theme::after {
+  --stretch: sin(var(--t) * 180deg);
+  --swell: calc(1 + .16 * var(--press));
   content: "";
   position: absolute;
   top: 4px;
@@ -562,22 +667,28 @@ h1 {
   width: 36px;
   height: 36px;
   border-radius: 999px;
+  pointer-events: none;
+  translate: calc(var(--t) * 38px) 0;
+  scale: calc((1 + .4 * var(--stretch)) * var(--swell)) calc((1 - .22 * var(--stretch)) * var(--swell));
+}
+
+/* the solid bead */
+.theme::before {
   background: var(--bead);
   box-shadow: var(--bead-shadow);
-  transition: translate 460ms var(--spring), scale 200ms var(--ease);
+  opacity: calc(1 - var(--press));
 }
 
-.theme:active::before {
-  scale: 1.14 .9;
-}
-
-@media (prefers-color-scheme: light) {
-  :root:has(#theme:checked) .theme::before { translate: 38px 0; }
-}
-
-@media (prefers-color-scheme: dark) {
-  .theme::before { translate: 38px 0; }
-  :root:has(#theme:checked) .theme::before { translate: 0 0; }
+/* the clear lens: transparent fill, bright rim, a light blur over the track (and the icon, which it magnifies) */
+.theme::after {
+  z-index: 2;
+  background: radial-gradient(70% 60% at 50% 30%, rgba(255, 255, 255, .22), transparent 70%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, .95), inset 0 2px 3px rgba(255, 255, 255, .55),
+    inset 0 -2px 4px rgba(30, 34, 40, .10), 0 2px 8px rgba(30, 34, 40, .14);
+  opacity: var(--press);
+  -webkit-backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
+  backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
 }
 
 .sun,
@@ -588,11 +699,18 @@ h1 {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  transition: color 240ms var(--ease);
 }
 
-.sun { color: light-dark(var(--ink), var(--soft-text)); }
-.moon { color: light-dark(var(--soft-text), var(--ink)); }
+/* the icon under the lens grows: the lens magnifies it */
+.sun {
+  color: var(--sun-c);
+  scale: calc(1 + .3 * var(--press) * (1 - var(--t)));
+}
+
+.moon {
+  color: var(--moon-c);
+  scale: calc(1 + .3 * var(--press) * var(--t));
+}
 
 .sun::before {
   content: "";
@@ -627,7 +745,6 @@ h1 {
   flex-direction: column;
   padding: 0;
   isolation: isolate;
-  transition: transform 200ms var(--ease);
 }
 
 summary {
@@ -1080,7 +1197,8 @@ summary:active .toggle {
 
   .paper { background-color: var(--solid-paper); }
 
-  .theme {
+  .theme,
+  .theme::after {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -1123,6 +1241,11 @@ summary:active .toggle {
 
   .theme::before {
     border: 2px solid Highlight;
+    opacity: 1;
+  }
+
+  .theme::after {
+    display: none;
   }
 
   .live,
@@ -1144,8 +1267,7 @@ summary:active .toggle {
   details.tile:hover { transform: none; }
   summary:active,
   summary:hover .toggle,
-  summary:active .toggle,
-  .theme:active::before { scale: none; }
+  summary:active .toggle { scale: none; }
   .pills a:hover,
   .pills a:active { translate: none; }
 }
