@@ -17,7 +17,7 @@ Food Pantry Weekly Digest. Turns a pantry's weekly numbers into a plain-English 
 ĀRIAxĒRON (2025). Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.
 
 WHY THIS JOB
-When the tool I need doesn't exist, I build it, and I don't stop until it works. At The St. Regis I learned to see what people need before they ask. This job is both, for a customer's team.
+When the tool I need doesn't exist, I build it, and I don't stop until it works. At The St. Regis I learned to see what people need before they ask. This job is both, for a customer's team. Give me a customer's repo and I'll make it agent-ready, catch what the agent gets wrong, and stay until the tickets merge.
 
 HOW I WORK
 Verification over vibes. Nothing is done because it looks done; it's done when it ran and left a receipt.
