@@ -37,12 +37,9 @@
     </header>
 
     <main>
-      <section class="projects" aria-labelledby="shipped">
-        <h2 id="shipped" class="visually-hidden">What I've shipped</h2>
-
-        <details class="tile aura green">
+      <details class="tile aura green">
           <summary>
-            <h3>CareerOS</h3>
+            <h2>CareerOS</h2>
             <span class="live">Live</span>
             <span class="big">161<span class="of"> of </span>162</span>
             <span class="caption">cloud runs succeeded</span>
@@ -55,9 +52,9 @@
           </div>
         </details>
 
-        <details class="tile aura orange">
+      <details class="tile aura orange">
           <summary>
-            <h3>XPT OS</h3>
+            <h2>XPT OS</h2>
             <span class="big">17</span>
             <span class="caption">weekly runs</span>
             <span class="line">The cloud sandbox blocked outbound calls, so a git commit became the message queue.</span>
@@ -68,9 +65,9 @@
           </div>
         </details>
 
-        <details class="tile aura pink">
+      <details class="tile aura pink">
           <summary>
-            <h3>Food Pantry Weekly Digest</h3>
+            <h2>Food Pantry Weekly Digest</h2>
             <span class="big">1<span class="arrow"> → </span>0</span>
             <span class="caption">file → logins</span>
             <span class="line">Turns a pantry's weekly numbers into a plain-English brief for volunteers.</span>
@@ -82,9 +79,48 @@
           </div>
         </details>
 
-        <details class="tile aura orb">
+      <section class="tile why" aria-labelledby="why">
+        <h2 id="why">Why this job</h2>
+        <p>When the tool I need doesn't exist, I build it, and I don't stop until it works. At The St. Regis I learned to see what people need before they ask. This job is both, for a customer's team. Give me a customer's repo and I'll make it agent-ready, catch what the agent gets wrong, and stay until the tickets merge.</p>
+      </section>
+
+      <section class="tile build" aria-labelledby="build">
+        <div class="build-head">
+          <h2 id="build">How this page was built</h2>
+          <p class="build-intro">A Fredrin agent wrote the code. I decided the facts, the rules and the checks, and reviewed every change. Claude, in a separate session, helped me plan, put my words together, prototype the design and check the work. The agent's first pull request merged itself in 38 seconds without review; I caught it, reverted it and switched to manual merge.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="when">01</span>
+            <span class="what" id="step-1">I locked the facts first (<a href="https://github.com/javierxelias-svg/about-me/blob/main/content.md" target="_blank" rel="noopener">content.md</a>) and had a checker built that failed before any code existed.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/2714ab4" target="_blank" rel="noopener" aria-describedby="step-1">commit</a>
+          </li>
+          <li>
+            <span class="when">02</span>
+            <span class="what" id="step-2">Ticket A ran with no project rules. Its pull request merged itself 38 seconds after opening, before anyone read it. I reverted it and turned on manual merge.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/1" target="_blank" rel="noopener" aria-describedby="step-2">PR #1</a>
+          </li>
+          <li>
+            <span class="when">03</span>
+            <span class="what" id="step-3">Same ticket, now with my rules (<a href="https://github.com/javierxelias-svg/about-me/blob/main/AGENTS.md" target="_blank" rel="noopener">AGENTS.md</a>). Both builds passed every check. The rules made the agent follow the standards, but neither page looked like me.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/526dfcb" target="_blank" rel="noopener" aria-describedby="step-3">commit</a>
+          </li>
+          <li>
+            <span class="when">04</span>
+            <span class="what" id="step-4">I wrote my design down (<a href="https://github.com/javierxelias-svg/about-me/blob/main/DESIGN.md" target="_blank" rel="noopener">DESIGN.md</a>) and sent the work back. The look you see came from that review, not from the first try.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/abbe230" target="_blank" rel="noopener" aria-describedby="step-4">commit</a>
+          </li>
+          <li>
+            <span class="when">05</span>
+            <span class="what" id="step-5">Every change since has been read and merged by me.</span>
+            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/2" target="_blank" rel="noopener" aria-describedby="step-5">PR #2</a>
+          </li>
+        </ol>
+      </section>
+
+      <details class="tile aura orb">
           <summary>
-            <h3>ĀRIAxĒRON</h3>
+            <h2>ĀRIAxĒRON</h2>
             <span class="big">61</span>
             <span class="caption">applicants in a month</span>
             <span class="line">Founded an email marketing company for luxury hotels.</span>
@@ -94,7 +130,6 @@
             <p>ĀRIAxĒRON (2025). Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.</p>
           </div>
         </details>
-      </section>
 
       <section class="tile paper who" aria-labelledby="who">
         <h2 id="who">Who I am</h2>
@@ -102,51 +137,10 @@
         <p>Before this I spent nearly four years in high-stakes customer work: two years as a butler at The St. Regis, then two years at Optum (UnitedHealthcare) selling and supporting health-insurance plans by phone. I installed Fredrin on October 24 and built this page with it.</p>
       </section>
 
-      <div class="side">
-        <section class="tile why" aria-labelledby="why">
-          <h2 id="why">Why this job</h2>
-          <p>When the tool I need doesn't exist, I build it, and I don't stop until it works. At The St. Regis I learned to see what people need before they ask. This job is both, for a customer's team. Give me a customer's repo and I'll make it agent-ready, catch what the agent gets wrong, and stay until the tickets merge.</p>
-        </section>
-
-        <section class="tile how" aria-labelledby="how">
-          <h2 id="how">How I work</h2>
-          <p class="principle">Verification over vibes.</p>
-          <p>Nothing is done because it looks done; it's done when it ran and left a receipt.</p>
-        </section>
-      </div>
-
-      <section class="tile build" aria-labelledby="build">
-        <div class="build-head">
-          <h2 id="build">How this page was built</h2>
-          <p class="build-intro">A Fredrin agent wrote the code. I wrote the facts, the rules and the checks, and reviewed every change. Claude, in a separate session, helped me plan, prototype the design and check the work. The agent's first pull request merged itself in 38 seconds without review; I caught it, reverted it and switched to manual merge.</p>
-        </div>
-        <ol class="steps">
-          <li>
-            <span class="when">01</span>
-            <span class="what" id="step-1">I wrote the facts first (content.md) and a checker that failed before any code existed.</span>
-            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/4357d48" target="_blank" rel="noopener" aria-describedby="step-1">commit</a>
-          </li>
-          <li>
-            <span class="when">02</span>
-            <span class="what" id="step-2">Ticket A ran with no project rules. Its pull request merged itself 38 seconds after opening, before anyone read it. I reverted it and turned on manual merge.</span>
-            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/1" target="_blank" rel="noopener" aria-describedby="step-2">PR #1</a>
-          </li>
-          <li>
-            <span class="when">03</span>
-            <span class="what" id="step-3">Same ticket, now with my rules (AGENTS.md). Both builds passed every check. The rules made the agent follow the standards, but neither page looked like me.</span>
-            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/526dfcb" target="_blank" rel="noopener" aria-describedby="step-3">commit</a>
-          </li>
-          <li>
-            <span class="when">04</span>
-            <span class="what" id="step-4">I wrote my design down (DESIGN.md) and sent the work back. The look you see came from that review, not from the first try.</span>
-            <a class="proof" href="https://github.com/javierxelias-svg/about-me/commit/abbe230" target="_blank" rel="noopener" aria-describedby="step-4">commit</a>
-          </li>
-          <li>
-            <span class="when">05</span>
-            <span class="what" id="step-5">Every change since has been read and merged by me.</span>
-            <a class="proof" href="https://github.com/javierxelias-svg/about-me/pull/2" target="_blank" rel="noopener" aria-describedby="step-5">PR #2</a>
-          </li>
-        </ol>
+      <section class="tile how" aria-labelledby="how">
+        <h2 id="how">How I work</h2>
+        <p class="principle">Verification over vibes.</p>
+        <p>Nothing is done because it looks done; it's done when it ran and left a receipt.</p>
       </section>
     </main>
 
