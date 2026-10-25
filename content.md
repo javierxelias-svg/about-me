@@ -11,7 +11,7 @@ CareerOS (live, runs daily). A job-search engine that tracks 341 employer job bo
 
 XPT OS (ran weekly, June to September 2026). An outreach engine for my own search. 17 weekly runs, 41 emails sent, 4 replies. The cloud sandbox blocked outbound calls, so a git commit became the message queue.
 
-Food Pantry line: 1 file, 0 logins.
+Food Pantry line: 1 → 2 (spreadsheet → brief + post).
 Food Pantry Weekly Digest. Turns a pantry's weekly numbers into a plain-English brief for volunteers. One file, no login. A demo on sample data: javierxelias-svg.github.io/food-pantry-weekly-digest
 
 ĀRIAxĒRON (2025). Founded an email marketing company for luxury hotels. Designed a three-stage hiring process that drew 61 applicants in a month, hired a team lead who built a 6-person remote team across 5 countries, and built a 679-contact lead list with an A/B-tested outreach sequence.

@@ -27,6 +27,8 @@
 - Signature: a soft light arc travels around each tile's rim (12s loop, phase offset by column and row so it reads as one light crossing the page). On hover, one quick extra lap is added on top of the running loop, so the arc lands back in phase: no snap, no freeze. If it can't be seamless, drop the hover lap.
 - One wide, soft band of light drifts slowly behind the grid (36s, transform only).
 - The "Live" dot pings using transform and opacity (not box-shadow).
+- **The theme switch is a liquid-glass droplet (CSS only, no JavaScript).** On press, the knob swells into a clear glass lens: transparent fill, a bright rim, and a light blur that magnifies what is behind it. On release it slides across, stretching like a drop of liquid in the direction it travels (wider and flatter mid-slide), then settles with one small wobble into the solid knob. About 500ms, spring easing. It works both ways, and nothing wobbles on page load.
+- **Flipping the theme melts the page** from one theme to the other (about 500ms) instead of snapping: the canvas, tile fills, text and rims cross-fade. Register the color tokens with `@property` so they can transition. No layout moves.
 - Everything that moves stops under `prefers-reduced-motion: reduce`. Write that rule on its own, so a selector the browser doesn't know can't cancel it.
 
 ## Layout: 12-column grid, gap 16px, max-width 1200px
@@ -45,7 +47,7 @@ The order puts the promise and its proof first: the full "Why this job" sentence
 - Project tiles are `<details>`. The closed state shows the title, the big number, a caption and the one-liner; opening shows the full paragraph and the link.
 - CareerOS: big "161 of 162" (the cloud-runs figure in content.md), caption "cloud runs succeeded", one-liner = the "CareerOS line".
 - XPT OS: big "17", caption "weekly runs", one-liner "The cloud sandbox blocked outbound calls, so a git commit became the message queue."
-- Food Pantry: big "1 → 0", caption "file → logins" (from the "Food Pantry line"), one-liner "Turns a pantry's weekly numbers into a plain-English brief for volunteers."
+- Food Pantry: big "1 → 2", caption "spreadsheet → brief + post" (from the "Food Pantry line"), one-liner "Turns a pantry's weekly numbers into a plain-English brief for volunteers."
 - ĀRIAxĒRON: big "61", caption "applicants in a month", one-liner "Founded an email marketing company for luxury hotels."
 - Who I am, Why this job, How I work, How this page was built (intro + steps 01–05 with their proof labels), How to reach me, Footer: from their sections in content.md.
 - Proof links: step 01 → commit 2714ab4 (the checker and its first failing run), 02 → pull request #1, 03 → commit 526dfcb, 04 → commit abbe230, 05 → pull request #2 (all on github.com/javierxelias-svg/about-me). Where step text names a file, link that word to the file on main, with no new words: "AGENTS.md" → blob/main/AGENTS.md, "DESIGN.md" → blob/main/DESIGN.md, "content.md" → blob/main/content.md. Keep each label's text exactly as content.md writes it after "Proof:". Put spaces or separate block elements between pieces of text so words never run together.
