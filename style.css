@@ -371,7 +371,6 @@ body::after {
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--glow) 35%, var(--rim-hi)) 0%, var(--rim-mid) 28%, transparent 55%, transparent 72%, color-mix(in srgb, var(--glow) 45%, var(--rim-back)) 100%),
     linear-gradient(180deg, transparent 15%, color-mix(in srgb, var(--glow) 22%, transparent) 60%, color-mix(in srgb, var(--glow) 34%, transparent));
-  background-attachment: scroll;
 }
 
 .aura::after {
@@ -776,11 +775,6 @@ details[open] .toggle {
   rotate: 45deg;
 }
 
-summary:active .toggle {
-  scale: .9;
-  transition-duration: 90ms;
-}
-
 .body {
   margin: 0 8px 8px;
   padding: 4px 20px 20px;
@@ -914,11 +908,6 @@ summary:active .toggle {
   border-radius: 999px;
 }
 
-.pills a:active {
-  translate: 0 1px;
-  transition-duration: 90ms;
-}
-
 .colophon {
   padding-top: 8px;
   color: var(--foot-text);
@@ -950,6 +939,17 @@ details[open] .body {
   .tile:hover::after { animation: rim-pass 1.6s cubic-bezier(.4, 0, .2, 1) 1; }
   summary:hover .toggle { scale: 1.07; }
   .pills a:hover { translate: 0 -1px; }
+}
+
+/* pressing wins over hover */
+summary:active .toggle {
+  scale: .9;
+  transition-duration: 90ms;
+}
+
+.pills a:active {
+  translate: 0 1px;
+  transition-duration: 90ms;
 }
 
 @keyframes rim {
