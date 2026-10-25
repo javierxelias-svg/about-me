@@ -838,8 +838,9 @@ details[open] .toggle {
   line-height: 1.65;
 }
 
-/* a feathered veil (light only) keeps small grey text readable over the color behind */
-.steps {
+/* a feathered veil (light only) keeps grey text readable over the color behind */
+.steps,
+.principle + p {
   border-radius: 16px;
   background: var(--veil);
   box-shadow: 0 0 22px 10px var(--veil);
