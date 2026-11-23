@@ -111,9 +111,7 @@
 @property --g-band { syntax: "<color>"; inherits: true; initial-value: transparent; }
 @property --b-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
 @property --b-mid { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --s-core { syntax: "<color>"; inherits: true; initial-value: transparent; }
 @property --g-in { syntax: "<color>"; inherits: true; initial-value: transparent; }
-@property --g-sky { syntax: "<color>"; inherits: true; initial-value: transparent; }
 
 :root {
   color-scheme: light dark;
@@ -130,7 +128,6 @@
   --hair: light-dark(rgba(0, 0, 0, .08), rgba(255, 255, 255, .07));
 
   /* project colors */
-  --lime: #DDF53C;
   --rose: light-dark(#F0397F, #FF4A92);
   --sky: light-dark(#8DB0F0, #6F9BFF);
   --violet: light-dark(#B48CF2, #A27BFF);
@@ -304,7 +301,7 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-/* ---------- Layout: 12 columns, rows 8+4 / 4+4+4 / 12 / 4+8 / 12 / 12 ---------- */
+/* ---------- Layout: 12 columns, rows 8+4 / 4+4+4 / 12 / 4+8 / 4+8 / 12 ---------- */
 
 .bento {
   position: relative;
@@ -327,10 +324,12 @@ main,
   grid-column: span 4;
 }
 
-.who { grid-column: span 8; }
+.who,
+.how {
+  grid-column: span 8;
+}
 
 .build,
-.how,
 .reach,
 .colophon {
   grid-column: 1 / -1;
@@ -338,12 +337,12 @@ main,
 
 /* Grid position of each tile (--c column, --r row): phases the rim light across the page */
 .green, .why { --c: 8; }
-.pink, .who { --c: 4; }
+.pink, .who, .how { --c: 4; }
 .green { --r: 0; }
 .orange, .pink, .why { --r: 1; }
 .build { --r: 2; }
 .orb, .who { --r: 3; }
-.how { --r: 4; }
+.alex, .how { --r: 4; }
 .reach { --r: 5; }
 
 /* ---------- Glass ---------- */
@@ -438,11 +437,12 @@ body::after {
 .orange { --glow: var(--tang); }
 .pink { --glow: var(--rose); }
 .orb { --glow: var(--violet); }
+.alex { --glow: var(--sky); }
 
 .aura {
   --g-band: light-dark(color-mix(in srgb, var(--glow) 60%, transparent), color-mix(in srgb, var(--glow) 45%, transparent));
   box-shadow: var(--lift), var(--thick), inset 0 -18px 30px -20px var(--g-band);
-  transition: transform 200ms var(--ease), --g-band var(--melt), --g-in var(--melt), --g-sky var(--melt);
+  transition: transform 200ms var(--ease), --g-band var(--melt), --g-in var(--melt);
 }
 
 .aura::before {
@@ -465,11 +465,13 @@ body::after {
   .orange { anchor-name: --orange; }
   .pink { anchor-name: --pink; }
   .orb { anchor-name: --orb; }
+  .alex { anchor-name: --alex; }
 
   main::after,
   .foot::before,
   .foot::after,
-  .bento::after {
+  .bento::after,
+  .colophon::before {
     --b-core: light-dark(color-mix(in srgb, var(--b) 80%, transparent), color-mix(in srgb, var(--b) 78%, transparent));
     --b-mid: light-dark(color-mix(in srgb, var(--b) 50%, transparent), color-mix(in srgb, var(--b) 46%, transparent));
     content: "";
@@ -482,21 +484,15 @@ body::after {
     right: max(calc(anchor(right) - 56px), -12px);
     pointer-events: none;
     background: radial-gradient(closest-side at 50% 56%, var(--b-core), var(--b-mid) 70%, transparent 100%);
-    transition: --b-core var(--melt), --b-mid var(--melt), --s-core var(--melt);
+    transition: --b-core var(--melt), --b-mid var(--melt);
   }
 
   main::after { position-anchor: --green; --b: var(--leaf); }
   .foot::before { position-anchor: --orange; --b: var(--tang); }
   .foot::after { position-anchor: --pink; --b: var(--rose); }
-
-  .bento::after {
-    --s-core: light-dark(color-mix(in srgb, var(--sky) 80%, transparent), color-mix(in srgb, var(--sky) 78%, transparent));
-    position-anchor: --orb;
-    --b: var(--violet);
-    background:
-      radial-gradient(36% 40% at 38% 48%, var(--s-core), transparent 100%),
-      radial-gradient(34% 38% at 64% 62%, var(--b-core), var(--b-mid) 60%, transparent 100%);
-  }
+  .bento::after { position-anchor: --orb; --b: var(--violet); }
+  /* the colophon is not positioned, so its light is placed in the grid like the others */
+  .colophon::before { position-anchor: --alex; --b: var(--sky); }
 }
 
 /* Without anchor positioning the light glows inside the tile instead */
@@ -505,11 +501,6 @@ body::after {
     --g-in: light-dark(color-mix(in srgb, var(--glow) 70%, transparent), color-mix(in srgb, var(--glow) 42%, transparent));
     --g-edge: color-mix(in srgb, var(--glow) 34%, transparent);
     background-image: var(--face), radial-gradient(48% 42% at 50% 56%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
-  }
-
-  .orb {
-    --g-sky: light-dark(color-mix(in srgb, var(--sky) 70%, transparent), color-mix(in srgb, var(--sky) 42%, transparent));
-    background-image: var(--face), radial-gradient(40% 40% at 40% 50%, var(--g-sky), transparent 100%), radial-gradient(38% 38% at 62% 60%, var(--g-in), transparent 100%), radial-gradient(48% 28% at 50% 72%, var(--g-edge), transparent 100%);
   }
 }
 
@@ -689,6 +680,10 @@ h1 {
     inset 0 0 0 1.5px rgba(255, 255, 255, .95), inset 0 2px 3px rgba(255, 255, 255, .55),
     inset 0 -2px 4px rgba(30, 34, 40, .10), 0 2px 8px rgba(30, 34, 40, .14);
   opacity: var(--press);
+}
+
+/* the lens only blurs while pressed, so at rest the page stays within its 12 blurred layers */
+.theme:active::after {
   -webkit-backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
   backdrop-filter: blur(1.5px) saturate(140%) brightness(1.06);
 }
@@ -795,37 +790,11 @@ summary h2 {
   grid-column: 1;
 }
 
-.live {
-  position: relative;
+/* a quiet dates label beside the title */
+.aura .pill {
   grid-column: 2;
   grid-row: 1;
   justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 3px 10px 3px 9px;
-  border-radius: 999px;
-  background: var(--lime);
-  color: #1B1C1E;
-  font-size: 12.5px;
-  font-weight: 500;
-}
-
-.live::before,
-.live::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #1B1C1E;
-}
-
-/* the ping ring sits exactly over the dot */
-.live::after {
-  position: absolute;
-  top: calc(50% - 3.5px);
-  left: 9px;
-  opacity: 0;
 }
 
 .caption {
@@ -1031,10 +1000,6 @@ body::after {
   animation: drift 36s ease-in-out infinite alternate;
 }
 
-.live::after {
-  animation: ping 2s cubic-bezier(0, 0, .2, 1) infinite;
-}
-
 details[open] .body {
   animation: reveal 300ms var(--ease);
 }
@@ -1065,11 +1030,6 @@ summary:active .toggle {
   to { transform: translateX(95vw) skewX(-16deg); }
 }
 
-@keyframes ping {
-  0% { opacity: .55; transform: scale(1); }
-  70%, 100% { opacity: 0; transform: scale(3); }
-}
-
 @keyframes reveal {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
@@ -1097,11 +1057,11 @@ summary:active .toggle {
     grid-column: span 6;
   }
 
-  /* the promise right after CareerOS, ĀRIAxĒRON with the other projects;
-     ĀRIAxĒRON and Who I am span the row, so no row has a hole */
+  /* the promise right after CareerOS, ĀRIAxĒRON and AlexandriaOS with the other projects;
+     Who I am and How I work span the row, so no row has a hole */
   .why,
-  .orb,
-  .who {
+  .who,
+  .how {
     grid-column: 1 / -1;
   }
 
@@ -1110,19 +1070,20 @@ summary:active .toggle {
   .orange { order: 2; }
   .pink { order: 3; }
   .orb { order: 4; }
-  .build { order: 5; }
-  .who { order: 6; }
-  .how { order: 7; }
-  .foot > * { order: 8; }
+  .alex { order: 5; }
+  .build { order: 6; }
+  .who { order: 7; }
+  .how { order: 8; }
+  .foot > * { order: 9; }
 
   .build { grid-template-columns: 1fr; }
 
   .hero, .why, .orange, .orb, .build, .who, .how, .reach { --c: 0; }
-  .green, .pink { --c: 6; }
+  .green, .pink, .alex { --c: 6; }
   .hero, .green { --r: 0; }
   .why { --r: 1; }
   .orange, .pink { --r: 2; }
-  .orb { --r: 3; }
+  .orb, .alex { --r: 3; }
   .build { --r: 4; }
   .who { --r: 5; }
   .how { --r: 6; }
@@ -1196,10 +1157,11 @@ summary:active .toggle {
   .orange { --r: 3; }
   .pink { --r: 4; }
   .orb { --r: 5; }
-  .build { --r: 6; }
-  .who { --r: 7; }
-  .how { --r: 8; }
-  .reach { --r: 9; }
+  .alex { --r: 6; }
+  .build { --r: 7; }
+  .who { --r: 8; }
+  .how { --r: 9; }
+  .reach { --r: 10; }
 }
 
 /* Reduce transparency: tiles become solid, readable surfaces */
@@ -1213,7 +1175,7 @@ summary:active .toggle {
   .paper { background-color: var(--solid-paper); }
 
   .theme,
-  .theme::after {
+  .theme:active::after {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -1228,7 +1190,8 @@ summary:active .toggle {
   main::after,
   .foot::before,
   .foot::after,
-  .bento::after {
+  .bento::after,
+  .colophon::before {
     display: none;
   }
 
@@ -1261,11 +1224,6 @@ summary:active .toggle {
 
   .theme::after {
     display: none;
-  }
-
-  .live,
-  .live::before {
-    forced-color-adjust: none;
   }
 }
 
